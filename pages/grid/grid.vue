@@ -23,7 +23,7 @@
 		
 		
 	<!-- 宫格 -->
-		<uni-section :title="$t('grid.grid')" style="margin: 0;" type="line" headTagColor="background:skyblue"></uni-section>
+		<uni-section :title="$t('grid.grid')" style="margin: 0;" type="line"></uni-section>
 		<view class="example-body">
 			<!-- @change="change" -->
 			<uni-grid :column="3" :highlight="true" @change="change">

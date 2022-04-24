@@ -182,7 +182,7 @@
             "path" : "pages/music/music-detail/music-detail",
             "style" :                                                                                    
             {
-                "navigationBarTitleText": "音乐内容",
+                "navigationBarTitleText": "音乐列表",
                 "enablePullDownRefresh": false
             }
             
