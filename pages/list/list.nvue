@@ -5,7 +5,7 @@
 		<!-- #endif -->
 
 		<!-- 搜索功能 -->
-		<view class="uni-search-box">
+		<view class="uni-search-box cu-bar bg-gradual-pink shadow-blur" >
 			<uni-search-bar v-model="keyword" ref="searchBar" radius="100" cancelButton="none" disabled
 				:placeholder="inputPlaceholder" />
 			<view class="cover-search-bar" @click="searchClick"></view>

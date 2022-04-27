@@ -78,7 +78,10 @@
 				// 'http://ql-u-pic.oss-cn-shanghai.aliyuncs.com/upic/2022/04/18/EzjmUY007IlaJNly1h02m7s9rmaj30u0190thx.jpeg',
 				'http://ql-u-pic.oss-cn-shanghai.aliyuncs.com/upic/2022/04/18/tDWflc007IlaJNly1h1179sybbpj31uo18gkc9.jpeg',
 				'http://ql-u-pic.oss-cn-shanghai.aliyuncs.com/upic/2022/04/18/7tDaVM007IlaJNly1h1179tfrhvj318g1uo1kx.jpeg',
-				'http://ql-u-pic.oss-cn-shanghai.aliyuncs.com/upic/2022/04/18/sAqwvN007IlaJNly1h02m7v2nibj31900u0wlt.jpeg'
+				'http://ql-u-pic.oss-cn-shanghai.aliyuncs.com/upic/2022/04/18/sAqwvN007IlaJNly1h02m7v2nibj31900u0wlt.jpeg',
+				'http://ql-u-pic.oss-cn-shanghai.aliyuncs.com/upic/2022/04/25/RJ5OQv尴尬而不是礼貌的微笑.png',
+				'http://ql-u-pic.oss-cn-shanghai.aliyuncs.com/upic/2022/04/25/0cezZy高马尾.png',
+				'http://ql-u-pic.oss-cn-shanghai.aliyuncs.com/upic/2022/04/25/8tvT6R与昂贵的麦合影.png'
 			]
 			for (var i = 0; i < url.length; i++) {
 				gridList.push({ 

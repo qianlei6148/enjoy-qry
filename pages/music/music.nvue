@@ -1,6 +1,9 @@
 <template>
 	<view class="warp">
-		<uni-section title="专辑" type="line" padding>
+		<cu-custom bgColor="bg-gradual-pink shadow-blur">
+			<block slot="content">音乐</block>
+		</cu-custom>
+		<uni-section title="作品" type="line" padding>
 			<unicloud-db ref="udb" v-slot:default="{data, loading, error, options}" collection="music-album"
 				field="_id,album,album_cover,release_date" orderby="release_date desc" @load="onqueryload">
 				<image v-if="!(loading||data.length)" class="banner-image" src="/static/grid/empty.png"
@@ -57,11 +60,12 @@
 			jump(item) {
 				// let item = this.gridList[e.detail.index];
 				uni.navigateTo({
-					url: './music-detail/music-detail?item=' + item
+					animationDuration: 500,
+					animationType: 'pop-in',
+					url: './music-detail/music-detail?item=' + item._id
 				})
 			},
-			onqueryload(data) {
-			},
+			onqueryload(data) {},
 		}
 	}
 </script>

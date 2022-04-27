@@ -1,6 +1,6 @@
 <template>
 	<view @click="onClick" :style="{width,height}">
-		<image v-if="cSrc" :style="{width,height}" :src="cSrc" :mode="mode"></image>
+		<image v-if="cSrc" :style="{width,height,borderRadius:radius+'%'}" :src="cSrc" :mode="mode"></image>
 	</view>
 </template>
 
@@ -32,7 +32,17 @@
 				default () {
 					return '100rpx'
 				}
-			}
+			},
+			style: {
+				type:String,
+				default () {
+					return ''
+				}
+			},
+			radius: {
+				type: [Number, String],
+				default: 5
+			},
 		},
 		watch: {
 			src:{

@@ -2,7 +2,8 @@
 	<view class="center">
 		<uni-sign-in ref="signIn"></uni-sign-in>
 		<view class="userInfo" @click.capture="toUserInfo">
-			<cloud-image width="150rpx" height="150rpx" v-if="userInfo.avatar_file&&userInfo.avatar_file.url" :src="userInfo.avatar_file.url" :click="click"></cloud-image>
+			<!--cloud-image中的click,没有用到 :click="click" -->
+			<cloud-image radius="30" width="150rpx" height="150rpx" v-if="userInfo.avatar_file&&userInfo.avatar_file.url" :src="userInfo.avatar_file.url" ></cloud-image>
 			<image v-else class="logo-img" src="@/static/uni-center/defaultAvatarUrl.png"></image>
 			<view class="logo-title">
 				<text class="uer-name" v-if="hasLogin">{{userInfo.nickname||userInfo.username||userInfo.mobile}}</text>
@@ -367,7 +368,8 @@
 		width: 750rpx;
 		padding: 20rpx;
 		padding-top: 50px;
-		background-image: url(../../static/uni-center/headers.png);
+		// background-image: url(../../static/uni-center/headers.png);
+		background-image: url(../../static/uni-center/WechatIMG24944.jpeg);
 		flex-direction: column;
 		align-items: center;
 	}

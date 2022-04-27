@@ -1,24 +1,29 @@
 <template>
-	<view class="uni-container">
-		<uni-forms ref="form" :value="formData" validate-trigger="submit" err-show-type="toast">
-			<uni-forms-item name="content" label="留言内容/回复内容" required>
-				<textarea @input="binddata('content', $event.detail.value)" class="uni-textarea-border"
-					v-model="formData.content" trim="right"></textarea>
-			</uni-forms-item>
-			<uni-forms-item name="imgs" label="图片列表">
-				<uni-file-picker file-mediatype="image" :limit="6" return-type="array" v-model="formData.imgs">
-				</uni-file-picker>
-			</uni-forms-item>
-			<uni-forms-item name="contact" label="联系人">
-				<uni-easyinput v-model="formData.contact" trim="both"></uni-easyinput>
-			</uni-forms-item>
-			<uni-forms-item name="mobile" label="联系电话">
-				<uni-easyinput v-model="formData.mobile" trim="both"></uni-easyinput>
-			</uni-forms-item>
-			<view class="uni-button-group">
-				<button type="primary" class="uni-button" @click="submit">提交</button>
-			</view>
-		</uni-forms>
+	<view class="">
+		<cu-custom :isBack="true" bgColor="bg-gradual-pink shadow-blur">
+			<block slot="content">问题与反馈</block>
+		</cu-custom>
+		<scroll-view scroll-y="true" class="page-content uni-container">
+			<uni-forms ref="form" :value="formData" validate-trigger="submit" err-show-type="toast">
+				<uni-forms-item name="content" label="留言内容/回复内容" required>
+					<textarea @input="binddata('content', $event.detail.value)" class="uni-textarea-border"
+						v-model="formData.content" trim="right"></textarea>
+				</uni-forms-item>
+				<uni-forms-item name="imgs" label="图片列表">
+					<uni-file-picker file-mediatype="image" :limit="6" return-type="array" v-model="formData.imgs">
+					</uni-file-picker>
+				</uni-forms-item>
+				<uni-forms-item name="contact" label="联系人">
+					<uni-easyinput v-model="formData.contact" trim="both"></uni-easyinput>
+				</uni-forms-item>
+				<uni-forms-item name="mobile" label="联系电话">
+					<uni-easyinput v-model="formData.mobile" trim="both"></uni-easyinput>
+				</uni-forms-item>
+				<view class="uni-button-group">
+					<button type="primary" class="uni-button" @click="submit">提交</button>
+				</view>
+			</uni-forms>
+		</scroll-view>
 	</view>
 </template>
 
@@ -99,6 +104,20 @@
 <style>
 	.uni-container {
 		padding: 15px;
+	}
+
+	.page-content {
+		position: fixed;
+		top: 64px;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		margin-top: 60rpx;
+		/* #ifdef H5 */
+		top: 44px; // h5 无状态栏
+		bottom: 100rpx;
+		/* #endif */
+		// background: #f8f8f8;
 	}
 
 	.uni-input-border,

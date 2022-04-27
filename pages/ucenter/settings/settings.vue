@@ -1,5 +1,8 @@
 <template>
 	<view class="content">
+		<cu-custom :isBack="true" bgColor="bg-gradual-pink shadow-blur">
+			  <block slot="content">设置</block>
+		</cu-custom>
 		<!-- 功能列表 -->
 		<uni-list class="mt10" :border="false">
 			<uni-list-item :title="$t('settings.userInfo')" to="/pages/ucenter/userinfo/userinfo" link="navigateTo"></uni-list-item>

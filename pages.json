@@ -168,27 +168,31 @@
 				"navigationBarTitleText": "意见反馈",
 				"enablePullDownRefresh": false
 			}
+		}, {
+			"path": "pages/music/music",
+			"style": {
+				"navigationBarTitleText": "音乐",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/music/music-detail/music-detail",
+			"style": {
+				"navigationBarTitleText": "音乐列表",
+				"enablePullDownRefresh": true
+			}
+
+		}, {
+			"path": "pages/music/music-detail/palyer",
+			"style": {
+				"navigationBarTitleText": "音乐播放",
+				"enablePullDownRefresh": false
+			}
+
 		}
-	    ,{
-            "path" : "pages/music/music",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "音乐",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-        ,{
-            "path" : "pages/music/music-detail/music-detail",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "音乐列表",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-    ],
+	],
 	"globalStyle": {
+		"navigationStyle": "custom",
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uni-starter",
 		"navigationBarBackgroundColor": "#FFFFFF",
@@ -227,12 +231,12 @@
 			"iconPath": "static/tabbar/dashboard.svg",
 			"selectedIconPath": "static/tabbar/dashboard.svg",
 			"text": "列表"
-		},{
-            "pagePath": "pages/music/music",
-            "iconPath": "static/tabbar/music.svg",
-            "selectedIconPath": "static/tabbar/music.svg",
-            "text": "音乐"
-        }, {
+		}, {
+			"pagePath": "pages/music/music",
+			"iconPath": "static/tabbar/music.svg",
+			"selectedIconPath": "static/tabbar/music.svg",
+			"text": "音乐"
+		}, {
 			"pagePath": "pages/ucenter/ucenter",
 			"iconPath": "static/tabbar/user.svg",
 			"selectedIconPath": "static/tabbar/user.svg",

@@ -1,23 +1,30 @@
 <template>
-	<view class="content">
+	<view>
+		<cu-custom :isBack="true" bgColor="bg-gradual-pink shadow-blur">
+			<block slot="content">{{$t('login.phoneLogin')}}</block>
+		</cu-custom>
 		<!-- 顶部文字 -->
-		<text class="title">{{$t('login.phoneLogin')}}</text>
-		<!-- 登录框 -->
-		<view v-if="['apple','weixin'].includes(type)" class="quickLogin">
-			<image @click="quickLogin" :src="imgSrc" mode="widthFix" class="quickLoginBtn"></image>
-			<uni-agreements @setAgree="agree = $event"></uni-agreements>
-		</view>
-		<template v-else>
-			<input type="number" class="input-box" :inputBorder="false" v-model="phone" maxlength="11"
-				:placeholder="$t('common.phonePlaceholder')" />
-			<uni-agreements @setAgree="agree = $event"></uni-agreements>
-			<button class="get-code" :disabled="!isPhone" :type="isPhone?'primary':'default'"
-				@click="sendShortMsg">{{$t('login.getVerifyCode')}}</button>
-			<text class="tip">{{$t('login.phoneLoginTip')}}</text>
-		</template>
+		<!-- <text class="title">{{$t('login.phoneLogin')}}</text> -->
+		<scroll-view scroll-y="true" class="page-content content">
+			<!-- 登录框 -->
+			<view v-if="['apple','weixin'].includes(type)" class="quickLogin">
+				<image @click="quickLogin" :src="imgSrc" mode="widthFix" class="quickLoginBtn"></image>
+				<uni-agreements @setAgree="agree = $event"></uni-agreements>
+			</view>
+			<template v-else>
+				<input type="number" class="input-box input-row" :inputBorder="false" v-model="phone" maxlength="11"
+					:placeholder="$t('common.phonePlaceholder')" />
+				<!-- <uni-agreements @setAgree="agree = $event"></uni-agreements> -->
+				<button class="get-code" :disabled="!isPhone" :type="isPhone?'primary':'default'"
+					@click="sendShortMsg">{{$t('login.getVerifyCode')}}</button>
+				<view style="margin: 20px auto 0;width: 600rpx;">
+					<text class="tip">{{$t('login.phoneLoginTip')}}</text>
+				</view>
+			</template>
 
-		<!-- 快捷登录按钮弹窗 -->
-		<uni-quick-login :agree="agree" ref="uniQuickLogin"></uni-quick-login>
+			<!-- 快捷登录按钮弹窗 -->
+			<uni-quick-login :agree="agree" ref="uniQuickLogin"></uni-quick-login>
+		</scroll-view>
 	</view>
 </template>
 
@@ -28,7 +35,7 @@
 			return {
 				type: "",
 				phone: "",
-				agree: false
+				agree: true //没有勾选，所以暂时默认true, 后续如果有用户确认的才设成false
 			}
 		},
 		computed: {
@@ -55,7 +62,7 @@
 				})
 			}
 			//#endif
-			uni.$on('setLoginType',type=>{
+			uni.$on('setLoginType', type => {
 				this.type = type
 			})
 		},
@@ -115,14 +122,49 @@
 </script>
 
 <style lang="scss" scoped>
+	.page-content {
+		position: fixed;
+		top: 64px;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		margin-top: 120rpx;
+		/* #ifdef H5 */
+		top: 44px; // h5 无状态栏
+		bottom: 100rpx;
+		/* #endif */
+		// background: #f8f8f8;
+	}
+
+	.input-row {
+		width: 600rpx;
+		height: 75rpx;
+		margin: 0 auto;
+		border: 1px solid $color;
+		color: #6c6c6c;
+		border-radius: 75rpx;
+		padding: 0 50rpx;
+		line-height: 75rpx;
+		margin-bottom: 45rpx;
+		font-size: 26rpx;
+	}
+
+	.get-code {
+		margin: 0 auto;
+		width: 600rpx;
+		border: 1px solid;
+		border-radius: 75rpx;
+	}
+
 	/* #ifndef APP-NVUE */
 	view {
 		display: flex;
 		box-sizing: border-box;
 		flex-direction: column;
 	}
+
 	/* #endif */
-	
+
 	@import url("../common/login-page.css");
 
 	.quickLogin {

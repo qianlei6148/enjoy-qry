@@ -1,4 +1,5 @@
 import user from '@/store/modules/user.js'
+import vuexMusic from '@/store/modules/music.js'
 
 // #ifndef VUE3
 import Vue from 'vue'
@@ -6,7 +7,8 @@ import Vuex from 'vuex'
 Vue.use(Vuex)
 const store = new Vuex.Store({
 	modules: {
-		user
+		user,
+		vuexMusic
 	},
 	strict: true
 })
@@ -16,7 +18,8 @@ const store = new Vuex.Store({
 import {createStore} from 'vuex'
 const store = createStore({
 	modules: {
-		user
+		user,
+		vuexMusic
 	}
 })
 // #endif

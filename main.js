@@ -2,7 +2,9 @@ import App from './App'
 import store from './store'
 import i18n from './lang/i18n'
 import APlayer from '@moefe/vue-aplayer'
-
+import cuCustom from './colorui/components/cu-custom.vue'
+import commonTime from '@/utils/util.js'
+Vue.component('cu-custom',cuCustom)
 
 // #ifndef VUE3
 import Vue from 'vue'
@@ -12,6 +14,7 @@ Vue.use(APlayer, {
 });
 Vue.config.productionTip = false
 Vue.prototype.$store = store
+Vue.prototype.$util = commonTime
 App.mpType = 'app'
 const app = new Vue({
 	i18n,
