@@ -223,6 +223,11 @@
 				Vue.prototype.cusPlay = this.onPlayFn
 				Vue.prototype.cusTimeUpdate = this.onTimeUpdateFn
 				Vue.prototype.cusEnded = this.onEndedFn
+				
+				this.setPlaydetail({
+					id,
+					pic: 'http://ql-u-pic.oss-cn-shanghai.aliyuncs.com/upic/2022/04/23/b3Up2n1151650698344_.pic.jpg'
+				})
 
 				// Promise.all([apiSong({
 				// 	id

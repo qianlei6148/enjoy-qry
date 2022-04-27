@@ -26,7 +26,7 @@
 			</uni-card>
 			<uni-section overflow title="歌曲" type="line">
 				<!-- <uni-card > -->
-					<mu-list :list="targetMuList" :isNav="false" :cover="bgimg"></mu-list>
+				<mu-list :list="targetMuList" :isNav="false" :cover="bgimg"></mu-list>
 				<!-- </uni-card> -->
 			</uni-section>
 		</scroll-view>
@@ -35,6 +35,7 @@
 </template>
 
 <script>
+	// const db = uniCloud.database()
 	// 防抖
 	function debounce(fn, wait = 10) {
 		var timeout = null;
@@ -46,15 +47,14 @@
 	var that = null
 	// import { getMuListDetail } from '@/apis/music.js';
 	import muList from '@/components/musiclist.vue'
-	import songList from '@/components/songlist.vue'
 	import {
 		mapGetters,
 		mapMutations
 	} from 'vuex'
 	import Vue from 'vue'
-	let update = true;
+	// let update = true;
+
 	const db = uniCloud.database()
-	
 	export default {
 		data() {
 			return {
@@ -70,8 +70,7 @@
 			};
 		},
 		components: {
-			muList,
-			songList
+			muList
 		},
 		computed: {
 			...mapGetters(['audiolist']),
@@ -113,11 +112,12 @@
 			//页面加载的时候，进行数据加载
 			this.getData(options.item);
 			this.initPlay(options.item)
-			
+
 		},
 		methods: {
 			...mapMutations(['setAudiolist', 'setPlaydetail', 'setIsplayingmusic', 'setIsplayactive']),
 			getData(id) {
+
 				let par = {
 					_id: id
 				};
@@ -139,6 +139,7 @@
 					.then(res => {
 						console.log("music-list", res.result.data)
 						this.targetMuList = res.result.data
+						this.setAudiolist(this.targetMuList)
 					})
 					.catch(err => {
 						console.log("music-list", err)
@@ -174,114 +175,20 @@
 				if (index) {
 					this.curPlayIndex = index
 				}
-				// Vue.prototype.cusPlay = this.onPlayFn
+				Vue.prototype.cusPlay = this.onPlayFn
 				Vue.prototype.cusTimeUpdate = this.onTimeUpdateFn
 				Vue.prototype.cusEnded = this.onEndedFn
-				
-				// 	this.$au_player.url = this.song.url;
-				// 	this.$au_player.title = this.song.name;
-				// 	this.$au_player.coverImgUrl = this.song.picUrl;
-				// 	this.$au_player.singer = this.song.singer;
-				// 	//h5
-				// 	this.$au_player.autoplay = true;
-				// 	//app
-				// 	this.$au_player.src = this.song.url;
-				// Promise.all([apiSong({
-				// 	id
-				// }), apiSongDetail({
-				// 	ids: id
-				// })]).then(res => {
-			
-				// 	const surl = res[0].data[0].url;
-				// 	if (!surl) {
-				// 		// uni.showModal({
-				// 		// 	content:'资源已经失效!请返回',
-				// 		// 	showCancel:false,
-				// 		// 	success: (res) => {
-				// 		// 		uni.navigateBack({
-				// 		// 			delta: 1
-				// 		// 		});
-				// 		// 	}
-				// 		// });
-				// 		uni.showToast({
-				// 			icon: 'none',
-				// 			title: '资源已经失效!请返回'
-				// 		})
-				// 		this.next()
-				// 		return;
-				// 	}
-				// 	const sdetail = res[1].songs[0];
-				// 	const singer = sdetail.ar[0].name;
-				// 	this.lybot = '';
-				// 	this.lycur = '';
-				// 	this.lytop = '';
-				// 	this.song = {
-				// 		id,
-				// 		url: surl,
-				// 		name: sdetail.name,
-				// 		picUrl: sdetail.al.picUrl,
-				// 		singer,
-				// 		time: Math.floor(sdetail.dt / 1000) // 播放时长
-				// 	}
-				// 	this.setPlaydetail({
-				// 		id,
-				// 		pic: sdetail.al.picUrl
-				// 	})
-				// 	this.$au_player.url = this.song.url;
-				// 	this.$au_player.title = this.song.name;
-				// 	this.$au_player.coverImgUrl = this.song.picUrl;
-				// 	this.$au_player.singer = this.song.singer;
-				// 	//h5
-				// 	this.$au_player.autoplay = true;
-				// 	//app
-				// 	this.$au_player.src = this.song.url;
-			
-			
-				// 	console.log('init')
-			
-				// }).catch(e => {
-				// 	console.info(e)
-				// 	this.setIsplayactive(false)
-				// })
-				//歌词可以 不用同步加载
-				// apiLyic({
-				// 	id
-				// }).then(res => {
-				// 	if (res.uncollected) {
-				// 		console.log('暂未收录歌词');
-				// 		this.lycur = '~暂未收录歌词~'
-				// 	}
-				// 	const lines = res.lrc.lyric.split('\n');
-				// 	const target = []
-				// 	for (let k in lines) {
-				// 		const timeMatch = lines[k].match(/\[(\d+:\d+\.\d+)\]/);
-				// 		let time = null;
-				// 		if (timeMatch) {
-				// 			const ts = timeMatch[1].split(':');
-				// 			time = Number(ts[0]) * 60 + Number(ts[1])
-				// 		}
-				// 		target.push({
-				// 			time,
-				// 			text: lines[k].replace(/^.+?\]/, '')
-				// 		})
-				// 	}
-				// 	this.lyric = target;
-				// }).catch(e => {
-				// 	this.$au_player.play();
-				// 	console.log('歌词加载失败', e)
-				// 	this.lycur = '~歌词加载失败~'
-				// })
 			},
 			onPlayFn() {
-				console.log("#onPlayFn", this.song.time)
-				this.playTime = this.song.time;
+				console.log("#onPlayFn")
+				// this.playTime = this.song.time;
 				this.isPlay = true
 				this.setIsplayingmusic(true)
 				this.setIsplayactive(true)
 				console.log('onplaying')
 			},
 			onTimeUpdateFn() {
-				console.log("#onTimeUpdateFn", this.$au_player.currentTime)
+				// console.log("#onTimeUpdateFn", this.$au_player.currentTime)
 				const curtime = this.$au_player.currentTime
 				this.curPlayTime = Math.floor(curtime);
 				// const lyric = this.lyric;
@@ -295,7 +202,7 @@
 				// 		}
 				// 	}
 				// }
-			
+
 			},
 			onEndedFn() {
 				console.log('ended')
@@ -303,7 +210,13 @@
 				this.setIsplayingmusic(false)
 				this.setIsplayactive(false)
 				this.next(true);
-			}
+			},
+			next(isAuto) {
+				// const index = this.getIndex('next', isAuto)
+				this.initPlay(this.audiolist[index].id)
+				// this.curPlayIndex = index;
+			},
+			
 		}
 	};
 </script>
@@ -315,6 +228,7 @@
 	.container {
 		overflow: hidden;
 	}
+
 	.nav-bar {
 		position: relative;
 		background-position: 0 0px;

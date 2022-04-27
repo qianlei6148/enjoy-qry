@@ -4,27 +4,16 @@
 			<text class="l">{{title}}</text>
 			<text class="r">{{more}}</text>
 		</view>
-		<!-- @click="toPlayer({id:val._id,index,list})" -->
-		<view class="item" v-for="(val,index) in list" :key="index"  >
-			<!-- <image class="img" :src="val.picUrl" mode=""></image> -->
+		<view class="item" v-for="(val,index) in list" :key="index">
 			<view class="flex-item index-item" style="width: 60rpx;">
 				{{index+1}}
 			</view>
 			<view class="text ellipsis flex-box">
-				<!-- <text class="text ellipsis">{{val.song_name}}</text> -->
-
-				<!-- <view class="flex-item" > -->
 				<text class="name ellipsis">{{val.song_name}}</text>
-				<!-- </view> -->
-
-				<!-- <text class="ar ellipsis">{{val.n1}} · {{val.n2}}</text> -->
 			</view>
-			<!-- <text class="cuIcon-right"></text> -->
-			<!-- <text class="cuIcon-right cuIcon-playfill" @click="play"></text> -->
-
 			<view class="play-btn flex-item" @click="play(index, val)">
-				<view v-if="!isPlay" class="iconfont">&#xe638;</view>
-				<view v-if="isPlay" class="iconfont">&#xe76a;</view>
+				<view v-if="(playdetail.id==val._id && isplayingmusic==true)" class="iconfont">&#xe76a;</view>
+				<view v-else class="iconfont">&#xe638;</view>
 			</view>
 		</view>
 	</view>
@@ -40,7 +29,7 @@
 	export default {
 		data() {
 			return {
-				isPlay: false,
+				// isPlay: false,
 			}
 		},
 		props: {
@@ -64,26 +53,24 @@
 				type: String,
 				default: ''
 			}
-			
+
 		},
-		onLoad(param) {
-			this.initPlay(param.id);
-		},
-		computed:{
-			...mapGetters(['audiolist'])
+		computed: {
+			...mapGetters(['playdetail', 'isplayingmusic'])
 		},
 		methods: {
-			...mapMutations(['setAudiolist', 'setPlaydetail', 'setIsplayingmusic', 'setIsplayactive']),
-			toPlayer(ele) {
-				uni.navigateTo({
+			...mapMutations(['setPlaydetail', 'setIsplayingmusic', 'setIsplayactive']),
+			// toPlayer(ele) {
+			// 	uni.navigateTo({
 					// animationDuration:500,
 					// animationType:'fade-in',
-					url: '/pages/music/music-detail/palyer?id=' + ele.id + '&index=' + ele.index + '&list=' +
-						encodeURIComponent(JSON.stringify(ele.list))
-				})
-			},
+			// 		url: '/pages/music/music-detail/palyer?id=' + ele.id + '&index=' + ele.index + '&list=' +
+			// 			encodeURIComponent(JSON.stringify(ele.list))
+			// 	})
+			// },
 			play(index, item) {
-				console.log(item)
+				console.log("musicList-play", item)
+				//如果不是同一首歌，则重置
 				if (this.$au_player.src !== item.song) {
 					this.$au_player.url = item.song;
 					this.$au_player.title = item.song_name;
@@ -98,18 +85,22 @@
 					// this.$au_player.src = item.song;
 					// #endif  
 					this.$au_player.src = item.song;
+					this.setPlaydetail({
+						id: item._id,
+						pic: this.cover
+					})
+					this.setIsplayingmusic(false)
 				}
-				if (this.isPlay) {
-					this.$au_player.pause();
+				if (this.isplayingmusic) {
+					this.$au_player.pause()
+					this.setIsplayingmusic(false)
 				} else {
-					this.$au_player.play();
+					this.$au_player.play()
+					this.setIsplayingmusic(true)
 				}
-				this.isPlay = !this.isPlay;
-				this.setIsplayingmusic(this.isPlay)
-				// initPlay(item._id ,index)
+				// this.isPlay = !this.isPlay;
 				
 			}
-			
 		}
 	}
 </script>
@@ -195,12 +186,14 @@
 				position: relative;
 				margin: 10rpx 6rpx;
 				font-size: 34rpx;
+
 				// width: 0rpx;
 				.iconfont {
 					font-size: 10rpx;
 					// width: 68rpx;
-					
+
 				}
+
 				&::before {
 					content: '';
 					display: block;

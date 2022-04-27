@@ -31,32 +31,13 @@
 		components: {},
 		data() {
 			return {
-				// strings: '<div style="text-align:center;"><img src="https://bjetxgzv.cdn.bspapp.com/VKCEYUGU-uni-app-doc/d8590190-4f28-11eb-b680-7980c8a877b8.png"/></div>',
-				// list: [],
-				// nodes: [{
-				// 	name: 'view',
-				// 	attrs: {
-				// 		class: 'div-class',
-				// 		style: 'line-height: 60px; color: red; text-align:center;'
-
-				// 	},
-				// 	// type: 'text',
-				// 	// text: 'Hello&nbsp;uni-app!\t\n',
-				// 	children: []
-				// }, {
-				// 	name: 'img',
-				// 	attr:{
-				// 		src: 'https://bjetxgzv.cdn.bspapp.com/VKCEYUGU-uni-app-doc/d8590190-4f28-11eb-b680-7980c8a877b8.png',
-				// 		style:'width:100%'
-				// 	}
-
-
-				// 	// width:'100%',
-				// 	// height:'100%'
-				// }]
+				
 			}
 		},
 		methods: {
+			change(){
+				
+			},
 			jump(item) {
 				// let item = this.gridList[e.detail.index];
 				uni.navigateTo({

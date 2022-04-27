@@ -92,7 +92,7 @@
 			}
 		},
 		mounted() {
-			console.log(this.require)
+			console.log("#cu-custom", this.require)
 		}
 	}
 </script>
