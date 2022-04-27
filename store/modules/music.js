@@ -1,7 +1,11 @@
 const state = {
+	//是否正在播放
 	isplayingmusic: false,
+	//是否打开迷你播放器
 	isplayactive:false,
+	//当前播放的歌曲
 	playdetail:'',
+	//播放列表
 	audiolist:[],
 }
 const getters = {
