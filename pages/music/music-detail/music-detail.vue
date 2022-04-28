@@ -35,7 +35,6 @@
 </template>
 
 <script>
-	// const db = uniCloud.database()
 	// 防抖
 	function debounce(fn, wait = 10) {
 		var timeout = null;
@@ -45,14 +44,12 @@
 		}
 	}
 	var that = null
-	// import { getMuListDetail } from '@/apis/music.js';
 	import muList from '@/components/musiclist.vue'
 	import {
 		mapGetters,
 		mapMutations
 	} from 'vuex'
 	import Vue from 'vue'
-	// let update = true;
 
 	const db = uniCloud.database()
 	export default {
@@ -73,23 +70,13 @@
 			muList
 		},
 		computed: {
-			...mapGetters(['audiolist']),
+			...mapGetters(['audiolist', 'playdetail']),
 			//歌曲列表，通过专辑信息，实时计算出来
 			targetMuLis() {
 				if (!this.albumMsg.album) return [];
 				const par = {
 					album_id: this.albumMsg._id
 				};
-				// return db.collection('music-list')
-				// 	.where(par)
-				// 	.get()
-				// 	.then(res => {
-				// 		console.log("music-list", res.result.data)
-				// 		return res.result.data
-				// 	})
-				// 	.catch(err => {
-				// 		console.log("music-list", err)
-				// 	})
 				const t = this.album.tracks.slice(0, 25);
 				return t.map(val => {
 					return {
@@ -115,9 +102,8 @@
 
 		},
 		methods: {
-			...mapMutations(['setAudiolist', 'setPlaydetail', 'setIsplayingmusic', 'setIsplayactive']),
+			...mapMutations(['setPlaydetail', 'setIsplayingmusic', 'setIsplayactive']),
 			getData(id) {
-
 				let par = {
 					_id: id
 				};
@@ -139,20 +125,11 @@
 					.then(res => {
 						console.log("music-list", res.result.data)
 						this.targetMuList = res.result.data
-						this.setAudiolist(this.targetMuList)
+						// this.setAudiolist(this.targetMuList)
 					})
 					.catch(err => {
 						console.log("music-list", err)
 					})
-
-
-				// getMuListDetail(par).then(res => {
-				// 	// res.playlist.description = res.playlist.description.slice(0, 27)
-				// 	const album = res.playlist;
-				// 	this.bgimg = album.backgroundCoverUrl || album.coverImgUrl
-				// 	this.album = album;
-				// 	this.playList = res.privileges;
-				// });
 			},
 			scrollpage(e) {
 				this.scrollY = e.detail.scrollTop
@@ -172,12 +149,32 @@
 				uni.navigateBack();
 			},
 			initPlay(id, index) {
-				if (index) {
-					this.curPlayIndex = index
-				}
+				// if (index) {
+				// 	this.curPlayIndex = index
+				// }
 				Vue.prototype.cusPlay = this.onPlayFn
 				Vue.prototype.cusTimeUpdate = this.onTimeUpdateFn
 				Vue.prototype.cusEnded = this.onEndedFn
+
+				//for循环对比，获取当前的
+				for (let i = 0; i < this.audiolist.length; i++) {
+					let item = this.audiolist[i]
+					if (id == item._id) {
+						this.$au_player.url = item.song;
+						this.$au_player.title = item.song_name;
+						this.$au_player.coverImgUrl = item.song_cover;
+						this.$au_player.singer = item.singer;
+						//h5
+						this.$au_player.autoplay = true;
+						//app
+						this.$au_player.src = item.song;
+						this.setPlaydetail({
+							id: item._id,
+							pic: item.song_cover
+						})
+						break
+					}
+				}
 			},
 			onPlayFn() {
 				console.log("#onPlayFn")
@@ -191,17 +188,6 @@
 				// console.log("#onTimeUpdateFn", this.$au_player.currentTime)
 				const curtime = this.$au_player.currentTime
 				this.curPlayTime = Math.floor(curtime);
-				// const lyric = this.lyric;
-				// if (update && lyric.length > 0) {
-				// 	for (let i = 0; i < lyric.length - 1; i++) {
-				// 		if (lyric[i] !== null && curtime - lyric[i].time < 0.15) {
-				// 			if (i > 2) this.lytop = lyric[i - 2].text;
-				// 			if (i > 1) this.lycur = lyric[i - 1].text ? lyric[i - 1].text : '~~~~~~~~'
-				// 			if (i < lyric.length - 1) this.lybot = lyric[i + 1].text;
-				// 			break;
-				// 		}
-				// 	}
-				// }
 
 			},
 			onEndedFn() {
@@ -212,11 +198,32 @@
 				this.next(true);
 			},
 			next(isAuto) {
-				// const index = this.getIndex('next', isAuto)
+				const index = this.getIndex('next', isAuto)
+				console.log(index)
 				this.initPlay(this.audiolist[index].id)
-				// this.curPlayIndex = index;
 			},
-			
+			getIndex(type, isAuto) {
+				//['0列表循环', '1随机播放', '2单曲循环']
+				let next = 0;
+				let prev = 0;
+				//获取当前播放列表
+				const last = this.audiolist.length - 1;
+				let cur = 0
+				//获取当前正在播放的歌曲
+				this.playdetail
+				//for循环对比，获取当前的
+				for (let i = 0; i < this.audiolist.length; i++) {
+					let audioCur = this.audiolist[i]
+					if (this.playdetail.id == audioCur._id) {
+						cur = i
+						break
+					}
+				}
+				next = cur == last ? 0 : cur + 1
+				//判断是上一首还是下一首
+				return type == 'next' ? next : prev
+			},
+
 		}
 	};
 </script>

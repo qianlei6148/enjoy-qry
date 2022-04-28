@@ -27,6 +27,11 @@
 			"title": "歌曲名",
 			"trim": "both"
 		},
+		"song_cover": {
+			"bsonType": "string",
+			"description": "歌曲封面",
+			"title": "歌曲封面"
+		},
 		"song": {
 			"bsonType": "string",
 			"description": "歌曲",
@@ -34,6 +39,12 @@
 			"format": "url",
 			"pattern": "^(http://|https://|/|./|@/)\\S",
 			"trim": "both"
+		},
+		"time": {
+			"bsonType": "timestamp",
+			"description": "歌曲时长",
+			"title": "歌曲时长"
+			
 		},
 		"singer": {
 			"bsonType": "string",

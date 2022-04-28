@@ -56,10 +56,10 @@
 
 		},
 		computed: {
-			...mapGetters(['playdetail', 'isplayingmusic'])
+			...mapGetters(['audiolist', 'playdetail', 'isplayingmusic'])
 		},
 		methods: {
-			...mapMutations(['setPlaydetail', 'setIsplayingmusic', 'setIsplayactive']),
+			...mapMutations(['setAudiolist','setPlaydetail', 'setIsplayingmusic', 'setIsplayactive']),
 			// toPlayer(ele) {
 			// 	uni.navigateTo({
 					// animationDuration:500,
@@ -70,24 +70,22 @@
 			// },
 			play(index, item) {
 				console.log("musicList-play", item)
+				//添加当前音乐列表
+				this.setAudiolist(this.list)
 				//如果不是同一首歌，则重置
 				if (this.$au_player.src !== item.song) {
 					this.$au_player.url = item.song;
 					this.$au_player.title = item.song_name;
-					this.$au_player.coverImgUrl = this.cover;
+					this.$au_player.coverImgUrl = item.song_cover;
 					this.$au_player.singer = item.singer;
 					//h5
-					// #ifdef H5 
 					this.$au_player.autoplay = true;
-					// #endif  
 					//app
-					// #ifdef APP-PLUS   
-					// this.$au_player.src = item.song;
-					// #endif  
 					this.$au_player.src = item.song;
+					
 					this.setPlaydetail({
 						id: item._id,
-						pic: this.cover
+						pic: item.song_cover
 					})
 					this.setIsplayingmusic(false)
 				}
