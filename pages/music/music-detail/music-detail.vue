@@ -160,14 +160,14 @@
 				for (let i = 0; i < this.audiolist.length; i++) {
 					let item = this.audiolist[i]
 					if (id == item._id) {
-						this.$au_player.url = item.song;
-						this.$au_player.title = item.song_name;
-						this.$au_player.coverImgUrl = item.song_cover;
-						this.$au_player.singer = item.singer;
+						this.$bgAudioManager.url = item.song;
+						this.$bgAudioManager.title = item.song_name;
+						this.$bgAudioManager.coverImgUrl = item.song_cover;
+						this.$bgAudioManager.singer = item.singer;
 						//h5
-						this.$au_player.autoplay = true;
+						this.$bgAudioManager.autoplay = true;
 						//app
-						this.$au_player.src = item.song;
+						this.$bgAudioManager.src = item.song;
 						this.setPlaydetail({
 							id: item._id,
 							pic: item.song_cover
@@ -179,20 +179,20 @@
 			onPlayFn() {
 				console.log("#onPlayFn")
 				// this.playTime = this.song.time;
-				this.isPlay = true
+				// this.isPlay = true
 				this.setIsplayingmusic(true)
 				this.setIsplayactive(true)
 				console.log('onplaying')
 			},
 			onTimeUpdateFn() {
-				// console.log("#onTimeUpdateFn", this.$au_player.currentTime)
-				const curtime = this.$au_player.currentTime
+				// console.log("#onTimeUpdateFn", this.$bgAudioManager.currentTime)
+				const curtime = this.$bgAudioManager.currentTime
 				this.curPlayTime = Math.floor(curtime);
 
 			},
 			onEndedFn() {
 				console.log('ended')
-				this.isPlay = false;
+				// this.isPlay = false;
 				this.setIsplayingmusic(false)
 				this.setIsplayactive(false)
 				this.next(true);

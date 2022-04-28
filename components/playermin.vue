@@ -5,6 +5,7 @@
 		<view class="btns" v-show="isOpen">
 			<text v-if="!isplayingmusic" class="item cuIcon-playfill" @click="play"></text>
 			<text v-if="isplayingmusic" class="item cuIcon-stop" @click="pause"></text>
+			<text class="item cuIcon-close" @click="close"></text>
 			<!-- <text class="item cuIcon-repeal" @click="toPlayPage"></text> -->
 		</view>
 	</view>
@@ -31,18 +32,25 @@
 			};
 		},
 		computed: {
-			...mapGetters(['isplayingmusic', 'playdetail', 'audiolist', 'isplayactive'])
+			...mapGetters(['isplayingmusic', 'playdetail', 'isplayactive'])
+			
 		},
 		methods: {
-			...mapMutations(['setIsplayingmusic', 'setPlaydetail']),
+			...mapMutations(['setIsplayingmusic', 'setPlaydetail', 'setIsplayactive']),
 			play() {
-				this.$au_player.play()
+				this.$bgAudioManager.play()
 				this.setIsplayingmusic(true)
 			},
 			pause() {
-				this.$au_player.pause();
+				this.$bgAudioManager.pause();
 				this.setIsplayingmusic(false)
 			},
+			close() {
+				this.$bgAudioManager.stop()
+				// this.setPlaydetail('')
+				// this.setIsplayingmusic(false)
+				// this.setIsplayactive(false)
+			}
 			// toPlayPage() {
 			// 	const list = this.audiolist;
 			// 	uni.navigateTo({

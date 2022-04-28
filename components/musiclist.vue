@@ -73,15 +73,15 @@
 				//添加当前音乐列表
 				this.setAudiolist(this.list)
 				//如果不是同一首歌，则重置
-				if (this.$au_player.src !== item.song) {
-					this.$au_player.url = item.song;
-					this.$au_player.title = item.song_name;
-					this.$au_player.coverImgUrl = item.song_cover;
-					this.$au_player.singer = item.singer;
+				if (this.$bgAudioManager.src !== item.song) {
+					this.$bgAudioManager.url = item.song;
+					this.$bgAudioManager.title = item.song_name;
+					this.$bgAudioManager.coverImgUrl = item.song_cover;
+					this.$bgAudioManager.singer = item.singer;
 					//h5
-					this.$au_player.autoplay = true;
+					this.$bgAudioManager.autoplay = true;
 					//app
-					this.$au_player.src = item.song;
+					this.$bgAudioManager.src = item.song;
 					
 					this.setPlaydetail({
 						id: item._id,
@@ -90,10 +90,10 @@
 					this.setIsplayingmusic(false)
 				}
 				if (this.isplayingmusic) {
-					this.$au_player.pause()
+					this.$bgAudioManager.pause()
 					this.setIsplayingmusic(false)
 				} else {
-					this.$au_player.play()
+					this.$bgAudioManager.play()
 					this.setIsplayingmusic(true)
 				}
 				// this.isPlay = !this.isPlay;

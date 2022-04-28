@@ -2,11 +2,11 @@ const state = {
 	//是否正在播放
 	isplayingmusic: false,
 	//是否打开迷你播放器
-	isplayactive:false,
+	isplayactive: false,
 	//当前播放的歌曲
-	playdetail:'',
+	playdetail: '',
 	//播放列表
-	audiolist:[],
+	audiolist: [],
 }
 const getters = {
 	isplayingmusic(state) {
@@ -15,7 +15,7 @@ const getters = {
 	isplayactive(state) {
 		return state.isplayactive
 	},
-	playdetail(state){
+	playdetail(state) {
 		return state.playdetail;
 	},
 	audiolist(state) {
@@ -30,7 +30,7 @@ const mutations = {
 	setIsplayactive(state, param) {
 		state.isplayactive = param
 	},
-	setPlaydetail(state, param){
+	setPlaydetail(state, param) {
 		state.playdetail = param
 	},
 	setAudiolist(state, param) {
@@ -43,7 +43,9 @@ const actions = {
 		context.commit('setIsplayingmusic', param)
 	}
 }
+
 export default {
+	// namespaced: true,
 	state,
 	mutations,
 	getters,

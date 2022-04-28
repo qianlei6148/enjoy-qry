@@ -170,7 +170,7 @@
 			...mapMutations(['setAudiolist', 'setPlaydetail', 'setIsplayingmusic', 'setIsplayactive']),
 			sliderChange(e) {
 				this.curPlayTime = e.detail.value;
-				this.$au_player.seek(this.curPlayTime)
+				this.$bgAudioManager.seek(this.curPlayTime)
 			},
 			setPlayModel() {
 				this.playModel = this.playModel == 2 ? 0 : this.playModel + 1;
@@ -201,7 +201,7 @@
 					this.setIsplayactive(true)
 
 				} else {
-					this.$au_player.stop();
+					this.$bgAudioManager.stop();
 					uni.navigateBack({
 						delta: 1
 					});
@@ -270,14 +270,14 @@
 				// 		id,
 				// 		pic: sdetail.al.picUrl
 				// 	})
-				// 	this.$au_player.url = this.song.url;
-				// 	this.$au_player.title = this.song.name;
-				// 	this.$au_player.coverImgUrl = this.song.picUrl;
-				// 	this.$au_player.singer = this.song.singer;
+				// 	this.$bgAudioManager.url = this.song.url;
+				// 	this.$bgAudioManager.title = this.song.name;
+				// 	this.$bgAudioManager.coverImgUrl = this.song.picUrl;
+				// 	this.$bgAudioManager.singer = this.song.singer;
 				// 	//h5
-				// 	this.$au_player.autoplay = true;
+				// 	this.$bgAudioManager.autoplay = true;
 				// 	//app
-				// 	this.$au_player.src = this.song.url;
+				// 	this.$bgAudioManager.src = this.song.url;
 
 
 				// 	console.log('init')
@@ -310,7 +310,7 @@
 				// 	}
 				// 	this.lyric = target;
 				// }).catch(e => {
-				// 	this.$au_player.play();
+				// 	this.$bgAudioManager.play();
 				// 	console.log('歌词加载失败', e)
 				// 	this.lycur = '~歌词加载失败~'
 				// })
@@ -324,8 +324,8 @@
 				console.log('onplaying')
 			},
 			onTimeUpdateFn() {
-				console.log("#onTimeUpdateFn", this.$au_player.currentTime)
-				const curtime = this.$au_player.currentTime
+				console.log("#onTimeUpdateFn", this.$bgAudioManager.currentTime)
+				const curtime = this.$bgAudioManager.currentTime
 				this.curPlayTime = Math.floor(curtime);
 				const lyric = this.lyric;
 				if (update && lyric.length > 0) {
@@ -368,9 +368,9 @@
 			},
 			play() {
 				if (this.isPlay) {
-					this.$au_player.pause();
+					this.$bgAudioManager.pause();
 				} else {
-					this.$au_player.play();
+					this.$bgAudioManager.play();
 				}
 				this.isPlay = !this.isPlay;
 				this.setIsplayingmusic(this.isPlay)

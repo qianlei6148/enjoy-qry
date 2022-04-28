@@ -78,8 +78,8 @@
 			audioPlayer = uni.getBackgroundAudioManager() //app,则注册一个背景音乐组件，当切后台后仍会播放音乐
 			// #endif
 			//注册事件函数写在全局或者写在vuex（不然重复绑定，内存泄露）里都行，这里图方便挂着全局
-			Vue.prototype.$au_player = audioPlayer;
-			Vue.prototype.$au_player.onPlay(() => {
+			Vue.prototype.$bgAudioManager = audioPlayer;
+			Vue.prototype.$bgAudioManager.onPlay(() => {
 				console.log('playing')
 				Vue.prototype.cusPlay && Vue.prototype.cusPlay()
 				clearInterval(timer)
@@ -88,20 +88,20 @@
 					Vue.prototype.cusTimeUpdate()
 				}, 200)
 			})
-			// Vue.prototype.$au_player.onTimeUpdate(()=>{
+			// Vue.prototype.$bgAudioManager.onTimeUpdate(()=>{
 			// 	console.log('update')
 			// 	Vue.prototype.cusTimeUpdate && Vue.prototype.cusTimeUpdate()
 			// })
-			Vue.prototype.$au_player.onEnded(() => {
+			Vue.prototype.$bgAudioManager.onEnded(() => {
 				Vue.prototype.cusEnded && Vue.prototype.cusEnded()
 				clearInterval(timer)
 			})
-			Vue.prototype.$au_player.onError((err) => {
+			Vue.prototype.$bgAudioManager.onError((err) => {
 				console.log('play err:' + err)
 				this.setIsplayactive(false)
 				clearInterval(timer)
 			})
-			Vue.prototype.$au_player.onStop((res) => {
+			Vue.prototype.$bgAudioManager.onStop((res) => {
 				console.log('play stop:' + res)
 				this.setIsplayactive(false)
 				clearInterval(timer)
@@ -116,7 +116,7 @@
 			console.log('App Hide')
 		},
 		methods: {
-			...mapMutations('vuexMusic', ['setIsplayactive'])
+			...mapMutations(['setIsplayactive'])
 		}
 	}
 </script>
