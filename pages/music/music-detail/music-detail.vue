@@ -70,7 +70,7 @@
 			muList
 		},
 		computed: {
-			...mapGetters(['audiolist', 'playdetail']),
+			...mapGetters('vuexMusic', ['audiolist', 'playdetail']),
 			//歌曲列表，通过专辑信息，实时计算出来
 			targetMuLis() {
 				if (!this.albumMsg.album) return [];
@@ -102,7 +102,7 @@
 
 		},
 		methods: {
-			...mapMutations(['setPlaydetail', 'setIsplayingmusic', 'setIsplayactive']),
+			...mapMutations('vuexMusic', ['setPlaydetail', 'setIsplayingmusic', 'setIsplayactive']),
 			getData(id) {
 				let par = {
 					_id: id

@@ -33,12 +33,6 @@
 					return '100rpx'
 				}
 			},
-			style: {
-				type:String,
-				default () {
-					return ''
-				}
-			},
 			radius: {
 				type: [Number, String],
 				default: 5

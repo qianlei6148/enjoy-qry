@@ -32,11 +32,11 @@
 			};
 		},
 		computed: {
-			...mapGetters(['isplayingmusic', 'playdetail', 'isplayactive'])
-			
+			...mapGetters('vuexMusic', ['isplayingmusic', 'playdetail', 'isplayactive'])
+
 		},
 		methods: {
-			...mapMutations(['setIsplayingmusic', 'setPlaydetail', 'setIsplayactive']),
+			...mapMutations('vuexMusic', ['setIsplayingmusic', 'setPlaydetail', 'setIsplayactive']),
 			play() {
 				this.$bgAudioManager.play()
 				this.setIsplayingmusic(true)
@@ -47,6 +47,7 @@
 			},
 			close() {
 				this.$bgAudioManager.stop()
+				this.setIsplayingmusic(false)
 				// this.setPlaydetail('')
 				// this.setIsplayingmusic(false)
 				// this.setIsplayactive(false)
@@ -74,7 +75,8 @@
 		border-radius: 50rpx 15rpx 15rpx 50rpx;
 
 		&.open {
-			border-radius: 45rpx;
+			// border-radius: 45rpx;
+			border-radius: 50%;
 		}
 
 		.img {

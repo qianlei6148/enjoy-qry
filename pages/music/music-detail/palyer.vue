@@ -131,7 +131,7 @@
 			};
 		},
 		computed: {
-			...mapGetters(['audiolist']),
+			...mapGetters('vuexMusic', ['audiolist']),
 			playTimeNum() {
 				return this.$util.formatTime(this.playTime)
 			},
@@ -167,7 +167,7 @@
 			// }, 1000)
 		},
 		methods: {
-			...mapMutations(['setAudiolist', 'setPlaydetail', 'setIsplayingmusic', 'setIsplayactive']),
+			...mapMutations('vuexMusic', ['setAudiolist', 'setPlaydetail', 'setIsplayingmusic', 'setIsplayactive']),
 			sliderChange(e) {
 				this.curPlayTime = e.detail.value;
 				this.$bgAudioManager.seek(this.curPlayTime)

@@ -56,10 +56,10 @@
 
 		},
 		computed: {
-			...mapGetters(['audiolist', 'playdetail', 'isplayingmusic'])
+			...mapGetters('vuexMusic', ['audiolist', 'playdetail', 'isplayingmusic'])
 		},
 		methods: {
-			...mapMutations(['setAudiolist','setPlaydetail', 'setIsplayingmusic', 'setIsplayactive']),
+			...mapMutations('vuexMusic', ['setAudiolist','setPlaydetail', 'setIsplayingmusic', 'setIsplayactive']),
 			// toPlayer(ele) {
 			// 	uni.navigateTo({
 					// animationDuration:500,

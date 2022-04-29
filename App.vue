@@ -116,7 +116,7 @@
 			console.log('App Hide')
 		},
 		methods: {
-			...mapMutations(['setIsplayactive'])
+			...mapMutations('vuexMusic', ['setIsplayactive'])
 		}
 	}
 </script>
