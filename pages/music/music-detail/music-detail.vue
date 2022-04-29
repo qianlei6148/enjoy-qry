@@ -98,7 +98,8 @@
 		onLoad(options) {
 			//页面加载的时候，进行数据加载
 			this.getData(options.item);
-			this.initPlay(options.item)
+			//初始化播放器参数
+			this.initPlay()
 
 		},
 		methods: {
@@ -154,8 +155,10 @@
 				// }
 				Vue.prototype.cusPlay = this.onPlayFn
 				Vue.prototype.cusTimeUpdate = this.onTimeUpdateFn
-				Vue.prototype.cusEnded = this.onEndedFn
-
+				Vue.prototype.cusEnded = this.onEndedFn				
+			},
+			playNextOrPrevSong(id) {
+				console.log('#playNextOrPrevSong 歌曲ID：', id)
 				//for循环对比，获取当前的
 				for (let i = 0; i < this.audiolist.length; i++) {
 					let item = this.audiolist[i]
@@ -193,7 +196,9 @@
 			next(isAuto) {
 				const index = this.getIndex('next', isAuto)
 				console.log(index)
-				this.initPlay(this.audiolist[index].id)
+				console.log(this.audiolist)
+				console.log(this.audiolist[index])
+				this.playNextOrPrevSong(this.audiolist[index]._id)
 			},
 			getIndex(type, isAuto) {
 				//['0列表循环', '1随机播放', '2单曲循环']
