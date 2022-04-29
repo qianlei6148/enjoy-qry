@@ -56,33 +56,25 @@
 
 		},
 		computed: {
-			...mapGetters('vuexMusic', ['audiolist', 'playdetail', 'isplayingmusic'])
+			...mapGetters('vuexMusic', ['audiolist', 'playdetail', 'isplayingmusic', 'bgAudioManager'])
 		},
 		methods: {
-			...mapMutations('vuexMusic', ['setAudiolist','setPlaydetail', 'setIsplayingmusic', 'setIsplayactive']),
+			...mapMutations('vuexMusic', ['setAudiolist', 'setPlaydetail', 'setIsplayingmusic', 'setIsplayactive', 'setBgAudioManager', 'playAudio', 'pauseAudio']),
 			// toPlayer(ele) {
 			// 	uni.navigateTo({
-					// animationDuration:500,
-					// animationType:'fade-in',
+			// animationDuration:500,
+			// animationType:'fade-in',
 			// 		url: '/pages/music/music-detail/palyer?id=' + ele.id + '&index=' + ele.index + '&list=' +
 			// 			encodeURIComponent(JSON.stringify(ele.list))
 			// 	})
 			// },
 			play(index, item) {
-				console.log("musicList-play", item)
+				console.log("#musicList-play", item)
 				//添加当前音乐列表
 				this.setAudiolist(this.list)
 				//如果不是同一首歌，则重置
-				if (this.$bgAudioManager.src !== item.song) {
-					this.$bgAudioManager.url = item.song;
-					this.$bgAudioManager.title = item.song_name;
-					this.$bgAudioManager.coverImgUrl = item.song_cover;
-					this.$bgAudioManager.singer = item.singer;
-					//h5
-					this.$bgAudioManager.autoplay = true;
-					//app
-					this.$bgAudioManager.src = item.song;
-					
+				if (this.bgAudioManager.src !== item.song) {
+					this.setBgAudioManager(item)
 					this.setPlaydetail({
 						id: item._id,
 						pic: item.song_cover
@@ -90,14 +82,14 @@
 					this.setIsplayingmusic(false)
 				}
 				if (this.isplayingmusic) {
-					this.$bgAudioManager.pause()
+					this.pauseAudio()
 					this.setIsplayingmusic(false)
 				} else {
-					this.$bgAudioManager.play()
+					this.playAudio()
 					this.setIsplayingmusic(true)
 				}
 				// this.isPlay = !this.isPlay;
-				
+
 			}
 		}
 	}

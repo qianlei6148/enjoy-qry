@@ -70,7 +70,7 @@
 			muList
 		},
 		computed: {
-			...mapGetters('vuexMusic', ['audiolist', 'playdetail']),
+			...mapGetters('vuexMusic', ['audiolist', 'playdetail', 'bgAudioManager']),
 			//歌曲列表，通过专辑信息，实时计算出来
 			targetMuLis() {
 				if (!this.albumMsg.album) return [];
@@ -102,7 +102,7 @@
 
 		},
 		methods: {
-			...mapMutations('vuexMusic', ['setPlaydetail', 'setIsplayingmusic', 'setIsplayactive']),
+			...mapMutations('vuexMusic', ['setPlaydetail', 'setIsplayingmusic', 'setIsplayactive', 'setBgAudioManager']),
 			getData(id) {
 				let par = {
 					_id: id
@@ -160,14 +160,7 @@
 				for (let i = 0; i < this.audiolist.length; i++) {
 					let item = this.audiolist[i]
 					if (id == item._id) {
-						this.$bgAudioManager.url = item.song;
-						this.$bgAudioManager.title = item.song_name;
-						this.$bgAudioManager.coverImgUrl = item.song_cover;
-						this.$bgAudioManager.singer = item.singer;
-						//h5
-						this.$bgAudioManager.autoplay = true;
-						//app
-						this.$bgAudioManager.src = item.song;
+						this.setBgAudioManager(item)
 						this.setPlaydetail({
 							id: item._id,
 							pic: item.song_cover
@@ -186,7 +179,7 @@
 			},
 			onTimeUpdateFn() {
 				// console.log("#onTimeUpdateFn", this.$bgAudioManager.currentTime)
-				const curtime = this.$bgAudioManager.currentTime
+				const curtime = this.bgAudioManager.currentTime
 				this.curPlayTime = Math.floor(curtime);
 
 			},

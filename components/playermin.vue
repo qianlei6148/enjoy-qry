@@ -32,25 +32,23 @@
 			};
 		},
 		computed: {
-			...mapGetters('vuexMusic', ['isplayingmusic', 'playdetail', 'isplayactive'])
+			...mapGetters('vuexMusic', ['isplayingmusic', 'playdetail', 'isplayactive', 'bgAudioManager'])
 
 		},
 		methods: {
-			...mapMutations('vuexMusic', ['setIsplayingmusic', 'setPlaydetail', 'setIsplayactive']),
+			...mapMutations('vuexMusic', ['setIsplayingmusic', 'setPlaydetail', 'setIsplayactive', 'playAudio', 'pauseAudio', 'stopAudio']),
 			play() {
-				this.$bgAudioManager.play()
+				this.playAudio()
 				this.setIsplayingmusic(true)
 			},
 			pause() {
-				this.$bgAudioManager.pause();
+				this.pauseAudio();
 				this.setIsplayingmusic(false)
 			},
 			close() {
-				this.$bgAudioManager.stop()
+				// this.bgAudioManager.stop()
+				this.stopAudio()
 				this.setIsplayingmusic(false)
-				// this.setPlaydetail('')
-				// this.setIsplayingmusic(false)
-				// this.setIsplayactive(false)
 			}
 			// toPlayPage() {
 			// 	const list = this.audiolist;
