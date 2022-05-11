@@ -69,15 +69,6 @@
 				});
 			}*/
 			// #endif
-			//音乐播放器 
-			// let audioPlayer = null;
-			// let timer = null;
-			// // #ifdef H5
-			// audioPlayer = uni.createInnerAudioContext() //H5 则注册一个音乐组件
-			// // #endif
-			// // #ifdef APP-PLUS
-			// audioPlayer = uni.getBackgroundAudioManager() //app,则注册一个背景音乐组件，当切后台后仍会播放音乐
-			// // #endif
 			//音乐播放器 注册事件函数写在全局或者写在vuex（不然重复绑定，内存泄露）里都行，目前卸载vuex中
 			this.setInitBgAudioManager()		
 		},
