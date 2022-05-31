@@ -43,7 +43,7 @@ export default {
 			"/pages/ucenter/ucenter",
 			"/pages/ucenter/about/about",
 			"/pages/ucenter/settings/settings",
-			// "/pages/music/music-detail/music-detail"
+			"./music-detail/music-detail"
 		],
 		/*
 		login:配置登录类型与优先级
