@@ -9,9 +9,10 @@
 				<image v-if="!(loading||data.length)" class="banner-image" src="/static/grid/empty.png"
 					mode="aspectFill" :draggable="false" />
 				<uni-grid v-else :column="2" :show-border="false" :square="false" @change="change">
-					<uni-grid-item v-for="(item ,index) in data" :index="index" :key="index" @>
+					<uni-grid-item v-for="(item ,index) in data" :index="index" :key="index">
 						<view class="grid-item-box">
-							<image class="image" :src="item.album_cover" mode="aspectFill" @tap.native="jump(item)" />
+							<!-- @tap.native="jump(item)" -->
+							<image class="image" :src="item.album_cover" mode="aspectFill" />
 							<text class="text">{{item.album}}</text>
 							<view v-if="item.badge" class="grid-dot">
 								<uni-badge :text="item.badge" :type="item.type" />
@@ -35,19 +36,29 @@
 			}
 		},
 		methods: {
-			change(){
-				
+			change(e){
+				let item = this.$refs.udb.dataList[e.detail.index]
+				this.jump(item)
 			},
 			jump(item) {
-				// let item = this.gridList[e.detail.index];
+				console.log(item);
 				uni.navigateTo({
 					animationDuration: 500,
 					animationType: 'pop-in',
 					url: './music-detail/music-detail?item=' + item._id
 				})
 			},
-			onqueryload(data) {},
+			onqueryload(data) {}
 		}
+		// onLoad() {
+		// 	uni.$on('change', (e)=>{
+		// 		let item = this.$refs.udb.dataList[e.detail.index]
+		// 		jump(item)
+		// 	});
+		// },
+		// onUnload() {
+		// 	uni.$off('change')
+		// }
 	}
 </script>
 
