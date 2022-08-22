@@ -40,6 +40,7 @@
 				</template>
 			</uni-grid>
 		</view>
+		<page-tabpars></page-tabpars>
 	</view>
 </template>
 

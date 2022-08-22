@@ -24,6 +24,7 @@
 		</uni-section>
 		<!-- <rich-text :nodes="nodes"></rich-text> -->
 		<!-- <u-parse :content="strings"></u-parse> -->
+		<page-tabpars></page-tabpars>
 	</view>
 </template>
 

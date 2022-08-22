@@ -28,6 +28,7 @@
 				</template>
 			</uni-list-item>
 		</uni-list>
+		<page-tabpars></page-tabpars>
 	</view>
 </template>
 
@@ -142,7 +143,7 @@
 			}
 		},
 		onLoad() {
-			// console.log(313,this.userInfo,this.hasLogin);
+			console.log(313,this.userInfo,this.hasLogin);
 			//#ifdef APP-PLUS
 			this.ucenterList[this.ucenterList.length - 2].unshift({
 				title:this.$t('mine.checkUpdate'),// this.this.$t('mine.checkUpdate')"检查更新"

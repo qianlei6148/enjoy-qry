@@ -351,6 +351,8 @@ export default async function() {
 					}
 					if (visitor) {
 						pass = visitor.some((item) => {
+							console.log('#visitor-list', item)
+							console.log('#visitor-goal', url)
 							if (typeof(item) == 'object' && item.pattern) {
 								return item.pattern.test(url)
 							}

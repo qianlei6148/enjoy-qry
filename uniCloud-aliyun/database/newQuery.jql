@@ -16,3 +16,7 @@ db.collection('music-album').get();
 db.collection('music-list').where({
 			album_id:"626215a0b5d741000180ca6b"	
 			}).get()
+			
+			db.collection('music-album').where({
+				_id:"626215a0b5d741000180ca6b"	
+			}).get()

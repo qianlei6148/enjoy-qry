@@ -22,7 +22,7 @@ const state = {
 		// },
 		{
 			name: 'music',
-			text: '消息',
+			text: '音乐',
 			icon: '/static/tabbar/music.svg',
 			// info: 99,
 			path: '/pages/music/music'

@@ -217,30 +217,41 @@
 		"current": 1
 	},
 	"tabBar": {
+		"custom" :"true",
 		"color": "#7A7E83",
 		"selectedColor": "#ff00d4",
 		"borderStyle": "black",
 		"backgroundColor": "#FFFFFF",
 		"list": [{
-			"pagePath": "pages/grid/grid",
-			"iconPath": "static/tabbar/main.svg",
-			"selectedIconPath": "static/tabbar/main.svg",
-			"text": "首页"
+			"pagePath": "pages/grid/grid"
+			// "iconPath": "http://ql-u-pic.oss-cn-shanghai.aliyuncs.com/upic/2022/05/16/ziiuCUmain.svg",
+			// "selectedIconPath": "http://ql-u-pic.oss-cn-shanghai.aliyuncs.com/upic/2022/05/16/ziiuCUmain.svg",
+			// "text": "首页"
 		}, {
-			"pagePath": "pages/list/list",
-			"iconPath": "static/tabbar/dashboard.svg",
-			"selectedIconPath": "static/tabbar/dashboard.svg",
-			"text": "列表"
+			"pagePath": "pages/list/list"
+			// "iconPath": "http://ql-u-pic.oss-cn-shanghai.aliyuncs.com/upic/2022/05/16/xjq2A0dashboard.svg",
+			// "selectedIconPath": "http://ql-u-pic.oss-cn-shanghai.aliyuncs.com/upic/2022/05/16/xjq2A0dashboard.svg",
+			// "text": "列表"
 		}, {
-			"pagePath": "pages/music/music",
-			"iconPath": "static/tabbar/music.svg",
-			"selectedIconPath": "static/tabbar/music.svg",
-			"text": "音乐"
+			"pagePath": "pages/music/music"
+			// "iconPath": "http://ql-u-pic.oss-cn-shanghai.aliyuncs.com/upic/2022/05/16/Yp3oqmmusic.svg",
+			// "selectedIconPath": "http://ql-u-pic.oss-cn-shanghai.aliyuncs.com/upic/2022/05/16/Yp3oqmmusic.svg",
+			// "text": "音乐"
 		}, {
-			"pagePath": "pages/ucenter/ucenter",
-			"iconPath": "static/tabbar/user.svg",
-			"selectedIconPath": "static/tabbar/user.svg",
-			"text": "我的"
+			"pagePath": "pages/ucenter/ucenter"
+			// "iconPath": "http://ql-u-pic.oss-cn-shanghai.aliyuncs.com/upic/2022/05/16/GkLckWuser.svg",
+			// "selectedIconPath": "http://ql-u-pic.oss-cn-shanghai.aliyuncs.com/upic/2022/05/16/GkLckWuser.svg",
+			// "text": "我的"
 		}]
+		// http://ql-u-pic.oss-cn-shanghai.aliyuncs.com/upic/2022/05/16/xjq2A0dashboard.svg
+		// http://ql-u-pic.oss-cn-shanghai.aliyuncs.com/upic/2022/05/16/ziiuCUmain.svg
+		// http://ql-u-pic.oss-cn-shanghai.aliyuncs.com/upic/2022/05/16/Yp3oqmmusic.svg
+		// http://ql-u-pic.oss-cn-shanghai.aliyuncs.com/upic/2022/05/16/GkLckWuser.svg
+	},
+	"easycom": {
+	  "autoscan": true,
+	  "custom": {
+	    "lb-tabbar-item": "@/components/lb-tabbar/lb-tabbar-item.vue"
+	  }
 	}
 }

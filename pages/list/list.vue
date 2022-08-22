@@ -63,6 +63,7 @@
 				<!-- #endif -->
 			</uni-list>
 		</unicloud-db>
+		<page-tabpars></page-tabpars>
 	</view>
 </template>
 
