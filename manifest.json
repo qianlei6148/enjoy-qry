@@ -2,8 +2,8 @@
     "name" : "enjoy-qry",
     "appid" : "__UNI__ED0BE1A",
     "description" : "查看qry",
-    "versionName" : "1.0.3",
-    "versionCode" : 4,
+    "versionName" : "1.0.5",
+    "versionCode" : 6,
     "transformPx" : false,
     "app-plus" : {
         "locales" : {
@@ -55,7 +55,8 @@
             "FaceID" : {},
             "Geolocation" : {},
             "Bluetooth" : {},
-            "VideoPlayer" : {}
+            "VideoPlayer" : {},
+            "Push" : {}
         },
         "distribute" : {
             "android" : {
@@ -85,25 +86,16 @@
                         "com.apple.developer.associated-domains" : [ "applinks:static-76ce2c5e-31c7-4d81-8fcf-ed1541ecbc6e.bspapp.com" ]
                     }
                 },
-                "UIBackgroundModes" : [ "audio" ]
+                "UIBackgroundModes" : [ "audio" ],
+                "dSYMs" : false
             },
             "sdkConfigs" : {
                 "oauth" : {
                     "apple" : {},
-                    "weixin" : {
-                        "appid" : "",
-                        "appsecret" : "",
-                        "UniversalLinks" : ""
-                    },
                     "univerify" : {}
                 },
                 "ad" : {},
-                "share" : {
-                    "weixin" : {
-                        "appid" : "",
-                        "UniversalLinks" : ""
-                    }
-                },
+                "share" : {},
                 "geolocation" : {
                     "baidu" : {
                         "__platform__" : [ "ios", "android" ],
@@ -112,7 +104,10 @@
                     }
                 },
                 "push" : {
-                    "unipush" : {}
+                    "unipush" : {
+                        "version" : "2",
+                        "offline" : false
+                    }
                 },
                 "payment" : {}
             },
@@ -161,7 +156,7 @@
         },
         "nvueCompiler" : "weex",
         "uniStatistics" : {
-            "enable" : false
+            "enable" : true
         }
     },
     "quickapp" : {},
@@ -189,7 +184,8 @@
         "usingComponents" : true
     },
     "uniStatistics" : {
-        "enable" : false
+        "enable" : false,
+        "version" : "2"
     },
     "h5" : {
         "template" : "",
@@ -208,5 +204,6 @@
         }
     },
     "_spaceID" : "",
-    "vueVersion" : "2"
+    "vueVersion" : "2",
+    "locale" : "zh-Hans"
 }
