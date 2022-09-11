@@ -1,5 +1,8 @@
 .DS_Store
 node_modules
+uni_modules
+uniCloud-aliyun
+
 /dist
 
 
@@ -22,3 +25,4 @@ pnpm-debug.log*
 *.sln
 *.sw?
 unpackage
+.hbuilderx
