@@ -62,13 +62,7 @@
 			"foreignKey": "uni-id-users._id"
 		}
 	},
-	"required": [
-		"music_id",
-		"user_id",
-		"comment_content",
-		"like_count",
-		"comment_type",
-		"reply_user_id",
+	"required": ["music_id", "user_id", "comment_content", "like_count", "comment_type", "reply_user_id",
 		"reply_comment_id"
 	]
 }

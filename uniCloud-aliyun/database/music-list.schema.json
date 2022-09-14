@@ -37,14 +37,13 @@
 			"description": "歌曲",
 			"title": "歌曲",
 			"format": "url",
-			"pattern": "^(http://|https://|/|./|@/)\\S",
+			"pattern": "^(http:\/\/|https:\/\/|\/|.\/|@\/)\\S",
 			"trim": "both"
 		},
 		"time": {
 			"bsonType": "timestamp",
 			"description": "歌曲时长",
 			"title": "歌曲时长"
-			
 		},
 		"singer": {
 			"bsonType": "string",
@@ -70,11 +69,5 @@
 			"title": "显示顺序"
 		}
 	},
-	"required": [
-		"album_id",
-		"song_name",
-		"song",
-		"singer",
-		"lyric"
-	]
+	"required": ["album_id", "song_name", "song", "singer", "lyric"]
 }

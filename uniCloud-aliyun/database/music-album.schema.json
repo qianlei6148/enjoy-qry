@@ -44,8 +44,5 @@
 			"title": "显示顺序"
 		}
 	},
-	"required": [
-		"album",
-		"release_date"
-	]
+	"required": ["album", "release_date"]
 }
