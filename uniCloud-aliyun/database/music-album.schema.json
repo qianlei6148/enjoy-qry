@@ -1,0 +1,48 @@
+{
+	"bsonType": "object",
+	"permission": {
+		"create": false,
+		"delete": false,
+		"read": true,
+		"update": false
+	},
+	"properties": {
+		"_id": {
+			"description": "ID，系统自动生成"
+		},
+		"create_date": {
+			"bsonType": "timestamp",
+			"description": "创建时间",
+			"forceDefaultValue": {
+				"$env": "now"
+			}
+		},
+		"album": {
+			"bsonType": "string",
+			"description": "专辑名称",
+			"title": "专辑名称"
+		},
+		"album_cover": {
+			"bsonType": "string",
+			"description": "专辑封面",
+			"title": "专辑封面"
+		},
+		"introduction": {
+			"bsonType": "string",
+			"description": "专辑简介",
+			"title": "专辑简介",
+			"label": "专辑内容"
+		},
+		"release_date": {
+			"bsonType": "timestamp",
+			"description": "发行日期",
+			"title": "发行日期"
+		},
+		"sort": {
+			"bsonType": "int",
+			"description": "顺序，由小到大",
+			"title": "显示顺序"
+		}
+	},
+	"required": ["album", "release_date"]
+}
