@@ -2,7 +2,8 @@
 	"bsonType": "object",
 	"required": ["username", "password"],
 	"permission": {
-		"read": "'READ_UNI_ID_USERS' in auth.permission",
+		// "read": "'READ_UNI_ID_USERS' in auth.permission",
+		"read": true,
 		"create": "'CREATE_UNI_ID_USERS' in auth.permission",
 		"update": "'UPDATE_UNI_ID_USERS' in auth.permission",
 		"delete": "'DELETE_UNI_ID_USERS' in auth.permission"
