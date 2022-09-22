@@ -6,6 +6,10 @@
     "versionCode" : 6,
     "transformPx" : false,
     "app-plus" : {
+		"statusbar":{
+			"immersed":false
+		},
+		"titleNView": false,
         "locales" : {
             "en" : {
                 "name" : "uni-starter",

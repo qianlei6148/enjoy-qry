@@ -165,7 +165,7 @@
 
 	/* #endif */
 
-	@import url("../common/login-page.css");
+	// @import url("../common/login-page.css");
 
 	.quickLogin {
 		width: 650rpx;

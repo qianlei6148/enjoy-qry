@@ -19,6 +19,7 @@
 			"style": {
 				"navigationBarTitleText": "",
 				"app-plus": {
+					"titleNView": false,
 					"animationType": "none",
 					"popGesture": "none"
 				}
@@ -32,12 +33,13 @@
 			"path": "pages/list/detail",
 			"style": {
 				"app-plus": {
-					"titleNView": {
-						"buttons": [{
-							"type": "share"
-						}],
-						"type": "transparent"
-					}
+					"titleNView": false
+					// {
+					// 	"buttons": [{
+					// 		"type": "share"
+					// 	}],
+					// 	"type": "transparent"
+					// }
 				},
 				"h5": {
 					"titleNView": {
@@ -55,22 +57,22 @@
 		{
 			"path": "pages/ucenter/ucenter",
 			"style": {
-				"navigationStyle": "custom"
+				"navigationStyle": "custom",
+				"app-plus": {
+					"titleNView": false
+				}
 			}
 		}, {
 			"path": "pages/ucenter/about/about",
 			"style": {
-				"navigationBarTitleText": "关于"
-					// #ifdef APP-PLUS
-					,
 				"app-plus": {
-					"titleNView": {
-						"buttons": [{
-							"type": "share"
-						}]
-					}
+					"titleNView": false
+					// {
+					// 	"buttons": [{
+					// 		"type": "share"
+					// 	}]
+					// }
 				}
-				// #endif
 			}
 
 		},
@@ -94,6 +96,7 @@
 			"style": {
 				"navigationStyle": "custom",
 				"app-plus": {
+					"titleNView": false,
 					"popGesture": "none"
 				}
 			}
@@ -116,30 +119,46 @@
 		}, {
 			"path": "pages/ucenter/login-page/pwd-login/pwd-login",
 			"style": {
-				"navigationBarTitleText": ""
+				"app-plus": {
+					"titleNView": false
+				},
+				"navigationStyle": "custom"
+				// "navigationBarTitleText": ""
 			}
 		}, {
 			"path": "pages/ucenter/login-page/pwd-retrieve/pwd-retrieve",
 			"style": {
+				"app-plus": {
+					"titleNView": false
+				},
 				"navigationBarTitleText": "重置密码"
 			}
 		}, {
 			"path": "pages/ucenter/login-page/phone-code/phone-code",
 			"style": {
-				"navigationBarTitleText": ""
+				"app-plus": {
+					"titleNView": false
+				}
+				// "navigationBarTitleText": ""
 			}
 
 		}, {
 			"path": "pages/common/webview/webview",
 			"style": {
-				"navigationBarTitleText": "",
+				"app-plus": {
+					"titleNView": false
+				},
+				// "navigationBarTitleText": "",
 				"enablePullDownRefresh": false
 			}
 
 		}, {
 			"path": "pages/ucenter/login-page/register/register",
 			"style": {
-				"navigationBarTitleText": "注册",
+				// "navigationBarTitleText": "注册",
+				"app-plus": {
+					"titleNView": false
+				},
 				"enablePullDownRefresh": false
 			}
 		},
@@ -193,10 +212,13 @@
 	],
 	"globalStyle": {
 		"navigationStyle": "custom",
-		"navigationBarTextStyle": "black",
-		"navigationBarTitleText": "uni-starter",
-		"navigationBarBackgroundColor": "#FFFFFF",
-		"backgroundColor": "#F8F8F8",
+		"app-plus": {
+			"titleNView": false
+		},
+		// "navigationBarTextStyle": "black",
+		// "navigationBarTitleText": "uni-starter",
+		// "navigationBarBackgroundColor": "#FFFFFF",
+		// "backgroundColor": "#F8F8F8",
 		"enablePullDownRefresh": false
 	},
 	"condition": {
@@ -217,7 +239,7 @@
 		"current": 1
 	},
 	"tabBar": {
-		"custom" :"true",
+		"custom": "true",
 		"color": "#7A7E83",
 		"selectedColor": "#ff00d4",
 		"borderStyle": "black",
@@ -249,9 +271,9 @@
 		// http://ql-u-pic.oss-cn-shanghai.aliyuncs.com/upic/2022/05/16/GkLckWuser.svg
 	},
 	"easycom": {
-	  "autoscan": true,
-	  "custom": {
-	    "lb-tabbar-item": "@/components/lb-tabbar/lb-tabbar-item.vue"
-	  }
+		"autoscan": true,
+		"custom": {
+			"lb-tabbar-item": "@/components/lb-tabbar/lb-tabbar-item.vue"
+		}
 	}
 }

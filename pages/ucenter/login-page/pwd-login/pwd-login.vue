@@ -143,7 +143,7 @@
 </script>
 
 <style lang="scss">
-	@import url("../common/login-page.css");
+	// @import url("../common/login-page.css");
 
 	.page-content {
 		position: fixed;

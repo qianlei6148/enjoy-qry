@@ -85,7 +85,7 @@
 				],
 				config: {},
 				univerifyStyle: { //一键登录弹出窗的样式配置参数
-					"fullScreen": true, // 是否全屏显示，true表示全屏模式，false表示非全屏模式，默认值为false。
+					"fullScreen": false, // 是否全屏显示，true表示全屏模式，false表示非全屏模式，默认值为false。
 					"backgroundColor": "#ffffff", // 授权页面背景颜色，默认值：#ffffff
 					"buttons": { // 自定义登录按钮
 						"iconWidth": "45px", // 图标宽度（高度等比例缩放） 默认值：45px
@@ -111,6 +111,7 @@
 			agree: {
 				type: Boolean,
 				default () {
+					//设置一键登录中同意栏的勾选，默认不勾选
 					return false
 				}
 			}

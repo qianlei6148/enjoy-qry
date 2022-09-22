@@ -1,8 +1,8 @@
 <template>
 	<view class="about">
-		<!-- <cu-custom :isBack="true" bgColor="bg-gradual-pink shadow-blur">
-			  <block slot="content">邀请</block>
-		</cu-custom> -->
+		<cu-custom :isBack="true" bgColor="bg-gradual-pink shadow-blur">
+			  <block slot="content">关于</block>
+		</cu-custom>
 		<view class="box">
 			<image class="logoImg" :src="about.logo"></image>
 			<text class="tip appName">{{about.appName}}</text>

@@ -69,7 +69,7 @@
 				});
 			}*/
 			// #endif
-			//音乐播放器 注册事件函数写在全局或者写在vuex（不然重复绑定，内存泄露）里都行，目前卸载vuex中
+			//音乐播放器 注册事件函数写在全局或者写在vuex（不然重复绑定，内存泄露）里都行，目前写在vuex中
 			this.setInitBgAudioManager()		
 		},
 		onShow: function() {
